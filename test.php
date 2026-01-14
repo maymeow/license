@@ -16,7 +16,8 @@ $license = LicenseGenerator::generateLicense(
     'Alice Smith',
     'alice@smith.tld',
     [
-        'blogs' => 5
+        'blogs' => 5,
+        'anotherFeature',
     ]
 );
 
@@ -32,4 +33,4 @@ $applicationKeyBytes = UnsignedArrayHelper::convertKeyToUnsignedArray($applicati
 
 $licenseInstance = new License($applicationKeyBytes, $signedLicense);
 
-var_dump($licenseInstance->hasFeature('blogs'));
+var_dump($licenseInstance->getFeatureValue('blogs'));

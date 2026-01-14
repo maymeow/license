@@ -66,4 +66,29 @@ class License
 
         return isset($licenseData['features'][$feature]);
     }
+
+    public function getFeatureValue(string $feature): bool|int|string
+    {
+        $licenseData = $this->getLicenseDataArray();
+
+        if (!$this->isValid()) {
+            return false;
+        }
+
+        $features = $licenseData['features'] ?? [];
+
+        // 1. Check if the feature acts as a KEY (e.g., 'blogs' => 5)
+        if (array_key_exists($feature, $features)) {
+            return $features[$feature];
+        }
+
+        // 2. Check if the feature acts as a VALUE (e.g., 'repost')
+        // If found, it means the feature is enabled (true)
+        if (in_array($feature, $features, true)) {
+            return true;
+        }
+
+        // 3. Feature not found
+        return false;
+    }
 }

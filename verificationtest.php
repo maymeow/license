@@ -32,7 +32,8 @@ $license = LicenseGenerator::generateLicense(
     'John Doe',
     'test@local.tld',
     [
-        'blogs' => 5
+        'blogs' => 5,
+        'repost',
     ]
 );
 
