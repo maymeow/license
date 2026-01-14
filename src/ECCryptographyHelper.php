@@ -68,4 +68,16 @@ class ECCryptographyHelper
             base64_decode($payload['tag'])
         );
     }
+
+    public function sign(string $data, string $privateKeyPem): string
+    {
+        openssl_sign($data, $signature, $privateKeyPem, OPENSSL_ALGO_SHA256);
+        return base64_encode($signature);
+    }
+
+    public function verify(string $data, string $signature, string $publicKeyPem): bool
+    {
+        $decodedSignature = base64_decode($signature);
+        return openssl_verify($data, $decodedSignature, $publicKeyPem, OPENSSL_ALGO_SHA256) === 1;
+    }
 }
