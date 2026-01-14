@@ -68,6 +68,7 @@ if ($license->isValid()) {
   - `isExpired()` expiry only
   - `hasFeature($key)` convenience feature flag lookup
   - `getOriginalLiceseData()` returns the original base64 payload
+  - `getFeatureValue($key)` returns feature value when it is sed or true/false when the feature is only a key.
 
 ### Handling keys as unsigned byte arrays
 If you store keys as unsigned byte arrays (e.g., in config), convert them with `UnsignedArrayHelper`:
